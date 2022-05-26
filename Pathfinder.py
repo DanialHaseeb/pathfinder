@@ -14,7 +14,6 @@ Pathfinder
 ----------------------------------------
 """
 from collections import deque
-from pickletools import UP_TO_NEWLINE
 from shelf import *
 
 # [3]
