@@ -1,2 +1,2 @@
-# pathfinder
-Path finding visualisations using Manim!
+# Pathfinder
+Pathfinding visualisations using Manim!
