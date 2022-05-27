@@ -23,11 +23,15 @@ class Curiosity(Scene):
         initialise(self, 3, startNode, goalNode)
 
         explored = set()
+        i = 0
         def depthLimitedSearch(node, limit):
-            if ((node in explored) or (limit == 0)):
+            nonlocal i
+            i += 1
+            if (node in explored) or (limit == 0):
                 return 'cutoff'
             
             if (node == goalNode):
+                print(node.path())
                 return node.path()
 
             explored.add(node)
@@ -35,22 +39,15 @@ class Curiosity(Scene):
             cutOff = False
 
             for child in node.expand():
-                print("Parent:", node)
-                print("Child:", child)
                 result = depthLimitedSearch(child, limit-1)
-
-                if   result == 'cutoff':
-                     cutOff = True
-                elif result is not None:
-                     
-                     return result
-
-            print()
-            print("**********")
+                if (result == 'cutoff'):
+                    cutOff = True
+                elif (result is not None):
+                    return result
             return 'cutoff' if cutOff else None
 
-        depthLimitedSearch(startNode, 4)
-
+        depthLimitedSearch(startNode, 50)
+        print(i)
         
 
 
